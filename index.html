@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مقهى الراحة - نظام الحجوزات</title>
+    <title>Café Al Raha - Système de réservation</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- شريط التنقل -->
+
+    <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">مقهى <span>الراحة</span></a>
+            <a href="index.html" class="logo">Café <span>Al Raha</span></a>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">الرئيسية</a></li>
-                <li><a href="menu.html">قائمة الطعام</a></li>
-                <li><a href="reservation.html">حجز طاولة</a></li>
-                <li><a href="about.html">من نحن</a></li>
-                <li><a href="contact.html">اتصل بنا</a></li>
-                <li><a href="admin/login.php" class="admin-btn">لوحة التحكم</a></li>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Réservation</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin/login.php" class="admin-btn">Administration</a></li>
             </ul>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -27,59 +28,59 @@
         </div>
     </nav>
 
-    <!-- قسم الهيرو -->
+    <!-- Section Hero -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>استمتع بأفضل قهوة في المدينة</h1>
-                <p>مكان مثالي للقاءات والاسترخاء مع أجواء هادئة وقهوة لذيذة</p>
-                <a href="reservation.html" class="btn">احجز طاولتك الآن</a>
+                <h1>Profitez du meilleur café de la ville</h1>
+                <p>Un lieu idéal pour se détendre et se retrouver dans une ambiance calme et chaleureuse</p>
+                <a href="reservation.html" class="btn">Réserver une table</a>
             </div>
         </div>
     </header>
 
-    <!-- المميزات -->
+    <!-- Avantages -->
     <section class="features">
         <div class="container">
-            <h2 class="section-title">لماذا تختار مقهى الراحة؟</h2>
+            <h2 class="section-title">Pourquoi choisir le Café Al Raha ?</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <i class="fas fa-coffee"></i>
-                    <h3>قهوة مميزة</h3>
-                    <p>نقدم أجود أنواع القهوة من أفضل المحاصيل العالمية</p>
+                    <h3>Café de qualité</h3>
+                    <p>Nous proposons les meilleurs cafés issus des meilleures récoltes</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-clock"></i>
-                    <h3>خدمة سريعة</h3>
-                    <p>نضمن لك خدمة سريعة وجودة عالية في كل الأوقات</p>
+                    <h3>Service rapide</h3>
+                    <p>Un service efficace avec une qualité constante</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-wifi"></i>
-                    <h3>واي فاي مجاني</h3>
-                    <p>اتصال إنترنت مجاني وسريع طوال فترة تواجدك</p>
+                    <h3>Wi-Fi gratuit</h3>
+                    <p>Connexion Internet gratuite et rapide pour tous nos clients</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-calendar-check"></i>
-                    <h3>حجز إلكتروني</h3>
-                    <p>احجز طاولتك بسهولة عبر نظامنا الإلكتروني المتطور</p>
+                    <h3>Réservation en ligne</h3>
+                    <p>Réservez votre table facilement via notre système en ligne</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم الحجوزات السريع -->
+    <!-- Réservation rapide -->
     <section class="quick-reservation">
         <div class="container">
-            <h2 class="section-title">احجز طاولتك الآن</h2>
+            <h2 class="section-title">Réservez maintenant</h2>
             <form id="quickReservationForm" class="reservation-form">
                 <div class="form-group">
-                    <input type="text" id="name" placeholder="الاسم الكامل" required>
+                    <input type="text" id="name" placeholder="Nom complet" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                    <input type="email" id="email" placeholder="Adresse e-mail" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+                    <input type="tel" id="phone" placeholder="Numéro de téléphone" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
@@ -87,76 +88,76 @@
                     </div>
                     <div class="form-group">
                         <select id="time" required>
-                            <option value="">اختر الوقت</option>
-                            <option value="08:00">08:00 ص</option>
-                            <option value="09:00">09:00 ص</option>
-                            <option value="10:00">10:00 ص</option>
-                            <option value="11:00">11:00 ص</option>
-                            <option value="12:00">12:00 م</option>
-                            <option value="13:00">01:00 م</option>
-                            <option value="14:00">02:00 م</option>
-                            <option value="15:00">03:00 م</option>
-                            <option value="16:00">04:00 م</option>
-                            <option value="17:00">05:00 م</option>
-                            <option value="18:00">06:00 م</option>
-                            <option value="19:00">07:00 م</option>
-                            <option value="20:00">08:00 م</option>
+                            <option value="">Choisir l’heure</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select id="people" required>
-                            <option value="">عدد الأشخاص</option>
-                            <option value="1">شخص واحد</option>
-                            <option value="2">شخصان</option>
-                            <option value="3">3 أشخاص</option>
-                            <option value="4">4 أشخاص</option>
-                            <option value="5">5 أشخاص</option>
-                            <option value="6">6 أشخاص</option>
-                            <option value="7">7 أشخاص</option>
-                            <option value="8">8 أشخاص أو أكثر</option>
+                            <option value="">Nombre de personnes</option>
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <option value="4">4 personnes</option>
+                            <option value="5">5 personnes</option>
+                            <option value="6">6 personnes</option>
+                            <option value="7">7 personnes</option>
+                            <option value="8">8 personnes ou plus</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea id="requests" placeholder="طلبات خاصة (اختياري)"></textarea>
+                    <textarea id="requests" placeholder="Demandes spéciales (optionnel)"></textarea>
                 </div>
-                <button type="submit" class="btn btn-submit">تأكيد الحجز</button>
+                <button type="submit" class="btn btn-submit">Confirmer la réservation</button>
             </form>
             <div id="reservationMessage" class="message"></div>
         </div>
     </section>
 
-    <!-- الفوتر -->
+    <!-- Pied de page -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>مقهى الراحة</h3>
-                    <p>أجواء هادئة، قهوة لذيذة، وخدمة مميزة. نحن هنا لنجعل يومك أفضل.</p>
+                    <h3>Café Al Raha</h3>
+                    <p>Ambiance calme, café délicieux et service de qualité.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>روابط سريعة</h3>
+                    <h3>Liens rapides</h3>
                     <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="menu.html">قائمة الطعام</a></li>
-                        <li><a href="reservation.html">حجز طاولة</a></li>
-                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="reservation.html">Réservation</a></li>
+                        <li><a href="about.html">À propos</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>اتصل بنا</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> شارع الرئيسي، وسط المدينة</p>
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rue principale, centre-ville</p>
                     <p><i class="fas fa-phone"></i> 0123456789</p>
                     <p><i class="fas fa-envelope"></i> info@coffee-shop.com</p>
                 </div>
                 <div class="footer-section">
-                    <h3>مواعيد العمل</h3>
-                    <p>الأحد - الخميس: 8 صباحاً - 10 مساءً</p>
-                    <p>الجمعة - السبت: 9 صباحاً - 11 مساءً</p>
+                    <h3>Horaires</h3>
+                    <p>Dimanche – Jeudi : 08h00 – 22h00</p>
+                    <p>Vendredi – Samedi : 09h00 – 23h00</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2023 مقهى الراحة. جميع الحقوق محفوظة.</p>
+                <p>© 2023 Café Al Raha. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
