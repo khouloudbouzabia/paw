@@ -26,7 +26,6 @@ if ($debug_mode) {
 }
 
 
-// CONNEXION DIRECTE À LA BASE DE DONNÉES
 $host   = 'localhost';           // Hôte
 $user   = 'root';                // Utilisateur
 $pass   = '';                    // Mot de passe
@@ -86,13 +85,4 @@ function db_last_id() {
     global $conn;
     return $conn->insert_id;
 }
-
-// EXEMPLE D'UTILISATION DE LA BASE
-// Exemple : récupérer tous les éléments du menu
-/*
-$result = db_query("SELECT * FROM menu_items");
-while ($item = db_fetch($result)) {
-    echo $item['name'] . " - " . $item['price'] . " R.S<br>";
-}
-*/
 ?>
