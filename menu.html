@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Café Al-Raha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Café <span>Al-Raha</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="reservation.html">Réservation</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin/login.php" class="admin-btn">Admin</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section d'en-tête -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Menu</h1>
+            <p>Profitez de notre sélection de cafés et plats délicieux</p>
+        </div>
+    </section>
+
+    <!-- Contenu de la page -->
+    <section class="menu-content">
+        <div class="container">
+            <!-- Filtrer par catégorie -->
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">Tout</button>
+                <button class="category-btn" data-category="coffee">Café</button>
+                <button class="category-btn" data-category="tea">Thé</button>
+                <button class="category-btn" data-category="pastry">Pâtisseries</button>
+                <button class="category-btn" data-category="sandwich">Sandwichs</button>
+                <button class="category-btn" data-category="dessert">Desserts</button>
+            </div>
+
+            <!-- Liste du menu -->
+            <div class="menu-items">
+                <!-- Rempli par JavaScript -->
+            </div>
+
+            <!-- Modèle d'un élément du menu -->
+            <template id="menuItemTemplate">
+                <div class="menu-item" data-category="">
+                    <div class="menu-item-image">
+                        <img src="" alt="">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="item-name"></h3>
+                        <p class="item-description"></p>
+                        <div class="item-footer">
+                            <span class="item-price"></span>
+                            <span class="item-badge"></span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Café Al-Raha</h3>
+                    <p>Ambiance calme, café délicieux et service exceptionnel. Nous sommes là pour rendre votre journée meilleure.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="reservation.html">Réservation</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rue principale, centre-ville</p>
+                    <p><i class="fas fa-phone"></i> 0123456789</p>
+                    <p><i class="fas fa-envelope"></i> info@coffee-shop.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Heures d'ouverture</h3>
+                    <p>Dimanche - Jeudi : 8h00 - 22h00</p>
+                    <p>Vendredi - Samedi : 9h00 - 23h00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Café Al-Raha. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
