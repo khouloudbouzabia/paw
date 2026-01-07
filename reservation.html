@@ -50,7 +50,7 @@
                     <form id="reservationForm" class="reservation-form">
                         <div class="form-group">
                             <label for="fullName">Nom complet *</label>
-                            <input type="text" id="fullName" name="name" placeholder="Entrez votre nom complet" required>
+                            <input type="text" id="fullName" name="customer_name" placeholder="Entrez votre nom complet" required>
                         </div>
 
                         <div class="form-row">
@@ -67,11 +67,11 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="reservationDate">Date *</label>
-                                <input type="date" id="reservationDate" name="date" required>
+                                <input type="date" id="reservationDate" name="reservation_date" required>
                             </div>
                             <div class="form-group">
                                 <label for="reservationTime">Heure *</label>
-                                <select id="reservationTime" name="time" required>
+                                <select id="reservationTime" name="reservation_time" required>
                                     <option value="">Choisir l’heure</option>
                                     <option value="08:00">08:00</option>
                                     <option value="09:00">09:00</option>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="numberOfPeople">Nombre de personnes *</label>
-                                <select id="numberOfPeople" name="people" required>
+                                <select id="numberOfPeople" name="number_of_people" required>
                                     <option value="">Choisir</option>
                                     <option value="1">1 personne</option>
                                     <option value="2">2 personnes</option>
@@ -106,7 +106,7 @@
 
                         <div class="form-group">
                             <label for="specialRequests">Demandes spéciales (optionnel)</label>
-                            <textarea id="specialRequests" name="requests"
+                            <textarea id="specialRequests" name="special_requests"
                                 placeholder="Anniversaire, occasion spéciale, allergies alimentaires..."></textarea>
                         </div>
 
