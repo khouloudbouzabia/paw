@@ -76,16 +76,16 @@
                     <h2>Envoyer un message</h2>
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="contactName" placeholder="Nom complet" required>
+                            <input type="text" id="contactName" name="name" placeholder="Nom complet" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="contactEmail" placeholder="Adresse e-mail" required>
+                            <input type="email" id="contactEmail" name="email" placeholder="Adresse e-mail" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="contactSubject" placeholder="Sujet" required>
+                            <input type="text" id="contactSubject" name="subject" placeholder="Sujet" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="contactMessage" placeholder="Message" rows="5" required></textarea>
+                            <textarea id="contactMessage" name="message" placeholder="Message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-submit">Envoyer le message</button>
                     </form>
@@ -96,7 +96,7 @@
                 <h2>Notre localisation sur la carte</h2>
                 <div class="map-placeholder">
                     <div class="map-image">
-                        <img src="images/map.jpg" alt="Carte de localisation">
+                        <img src="image/coffe1.jpg" alt="Carte de localisation">
                     </div>
                 </div>
             </div>
