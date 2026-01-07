@@ -5,13 +5,13 @@ header('Content-Type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-    $date = mysqli_real_escape_string($conn, $_POST['date']);
-    $time = mysqli_real_escape_string($conn, $_POST['time']);
-    $people = (int)$_POST['people'];
-    $requests = mysqli_real_escape_string($conn, $_POST['requests'] ?? '');
+   $name = mysqli_real_escape_string($conn, $_POST['customer_name']);
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$phone = mysqli_real_escape_string($conn, $_POST['phone']);
+$date = mysqli_real_escape_string($conn, $_POST['reservation_date']);
+$time = mysqli_real_escape_string($conn, $_POST['reservation_time']);
+$people = (int)$_POST['number_of_people'];
+$requests = mysqli_real_escape_string($conn, $_POST['special_requests'] ?? '');
 
     // Vérifier les champs obligatoires
     if (empty($name) || empty($email) || empty($phone) || empty($date) || empty($time) || empty($people)) {
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insertion des données dans la base de données
     $sql = "INSERT INTO reservations (
-                name, email, phone, reservation_date, reservation_time,
-                number_people, special_requests, status
+                customer_name, email, phone, reservation_date, reservation_time,
+                number_of_people, special_requests, status
             ) VALUES (
                 '$name', '$email', '$phone', '$date', '$time',
                 $people, '$requests', 'pending'
