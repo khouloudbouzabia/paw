@@ -13,16 +13,6 @@ $(document).ready(function() {
             message: $('#contactMessage').val()  // Contenu du message
         };
 
-        // Vérification de la validité du formulaire
-        if (!name || !email || !subject || !message) {
-            $('#contactMessageResponse')
-                .removeClass('success')
-                .addClass('error')
-                .show()
-                .text('Veuillez remplir tous les champs.');
-            return;
-        }
-
         // Envoi des données au serveur via AJAX
         $.ajax({
             url: 'php/process_contact.php', // Fichier de traitement côté serveur
