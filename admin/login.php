@@ -38,7 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['full_name'] = $user['full_name'];
 
             // Redirection vers le tableau de bord
-            header('Location: dashboard.php');
+            if ($user['role'] === 'admin') {
+                header('Location: dashboard.php');  // Pour l'administrateur
+            } else {
+                header('Location: staff_dashboard.php');  // Pour l'employé
+            }
             exit;
 
         } else {
