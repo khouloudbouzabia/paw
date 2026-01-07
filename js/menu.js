@@ -7,6 +7,7 @@ $(document).ready(function() {
             method: 'GET', // Méthode HTTP GET
             dataType: 'json', // Type de données attendu
             success: function(response) {
+                console.log(response);
                 if (response.success) {
                     callback(response.data); // Si succès, renvoyer les données au callback
                 } else {
@@ -57,10 +58,12 @@ $(document).ready(function() {
         $(this).addClass('active');
 
         // Filtrer les produits selon la catégorie
-        let filteredItems = menuData; // menuData contiendra les produits récupérés de PHP
+        let filteredItems = menuData;
         if (category !== 'all') {
             filteredItems = menuData.filter(item => item.category === category);
         }
+        displayMenuItems(filteredItems);
+
 
         // Afficher les produits filtrés
         displayMenuItems(filteredItems);
