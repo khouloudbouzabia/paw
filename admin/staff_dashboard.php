@@ -85,17 +85,6 @@ $recent_reservations = $conn->query("SELECT * FROM reservations ORDER BY created
             </div>
         </div>
 
-        <div class="charts-container">
-            <div class="chart-box">
-                <h3>Réservations de la dernière semaine</h3>
-                <canvas id="reservationsChart"></canvas>
-            </div>
-            <div class="chart-box">
-                <h3>Répartition des produits par catégorie</h3>
-                <canvas id="productsChart"></canvas>
-            </div>
-        </div>
-
         <div class="table-container">
             <h3>Dernières réservations</h3>
             <table class="data-table">
