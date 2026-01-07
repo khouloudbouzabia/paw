@@ -774,3 +774,460 @@ img.loaded {
     background-color: #ffebee;
     color: #c62828;
 }
+
+/* Conception responsive */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .navbar.active .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+    
+    .navbar.active .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .reservation-form {
+        padding: 20px;
+    }
+}
+
+/* Indicateur de chargement */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #5D4037;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Barre de navigation au défilement */
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 10000;
+    min-width: 300px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.error {
+    background-color: #F44336;
+}
+
+.notification.warning {
+    background-color: #FF9800;
+}
+
+.notification.info {
+    background-color: #2196F3;
+}
+
+.close-notification {
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Champ d'erreur */
+input.error, select.error, textarea.error {
+    border-color: #F44336 !important;
+    background-color: #ffebee;
+}
+
+/* Contenu dynamique */
+.main-content {
+    min-height: 400px;
+}
+
+/* Indicateur hors ligne */
+.offline-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF9800;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+/* Boutons de disponibilité */
+.toggle-availability {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.toggle-availability.available {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.toggle-availability.unavailable {
+    background-color: #F44336;
+    color: white;
+}
+
+/* Date et heure actuelles */
+.current-datetime {
+    font-family: 'Courier New', monospace;
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Contrôle vidéo */
+.video-container {
+    position: relative;
+}
+
+.video-control {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(93, 64, 55, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Conception responsive supplémentaire */
+@media (max-width: 768px) {
+    .notification {
+        left: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+    }
+    
+    .current-datetime {
+        font-size: 0.9rem;
+    }
+}
+
+/* Styles des pages secondaires */
+.page-header {
+    background-color: #5D4037;
+    color: white;
+    text-align: center;
+    padding: 100px 0 50px;
+    margin-top: 70px;
+}
+
+.page-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+
+/* Styles responsive supplémentaires */
+@media (max-width: 992px) {
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-vision {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-items {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page-header p {
+        font-size: 1.1rem;
+    }
+    
+    .about-text h2,
+    .contact-info h2,
+    .contact-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .team-grid,
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-categories {
+        gap: 10px;
+    }
+    
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tableau des disponibilités */
+.availability-section {
+    margin-bottom: 60px;
+}
+
+.availability-section h2 {
+    text-align: center;
+    color: #5D4037;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.availability-table {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.availability-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.availability-table th {
+    background-color: #5D4037;
+    color: white;
+    padding: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.availability-table td {
+    padding: 18px;
+    text-align: center;
+    border-bottom: 1px solid #EEE;
+    color: #555;
+}
+
+.availability-table tr:hover {
+    background-color: #FAFAFA;
+}
+
+.status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status.available {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status.limited {
+    background-color: #FFF3E0;
+    color: #F57C00;
+}
+
+/* Foire aux questions (FAQ) */
+.faq-section {
+    background-color: #FAFAFA;
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.faq-section h2 {
+    text-align: center;
+    color: #5D4037;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 25px;
+    background-color: white;
+    border: none;
+    text-align: right;
+    font-size: 1.1rem;
+    color: #5D4037;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #F5F5F5;
+}
+
+.faq-question i {
+    color: #5D4037;
+    transition: transform 0.3s;
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s;
+}
+
+.faq-answer p {
+    padding: 20px 0;
+    color: #666;
+    line-height: 1.7;
+    border-top: 1px solid #EEE;
+}
+
+/* Styles responsive supplémentaires pour réservation et FAQ */
+@media (max-width: 992px) {
+    .reservation-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .reservation-form-container,
+    .reservation-info {
+        padding: 30px;
+    }
+    
+    .faq-section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reservation-content {
+        padding: 50px 0;
+    }
+    
+    .reservation-form-container h2,
+    .reservation-info h2,
+    .availability-section h2,
+    .faq-section h2 {
+        font-size: 1.7rem;
+    }
+    
+    .info-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .info-icon {
+        margin: 0 auto;
+    }
+    
+    .availability-table th,
+    .availability-table td {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-question {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+}
