@@ -36,7 +36,7 @@ $(document).ready(function() {
             $item.attr('data-category', item.category); // Attribuer la catégorie
             $item.find('.item-name').text(item.name); // Nom du produit
             $item.find('.item-description').text(item.description); // Description
-            $item.find('.item-price').text(parseFloat(item.price).toFixed(2) + ' €'); // Prix formaté
+            $item.find('.item-price').text(parseFloat(item.price).toFixed(2) + ' DA'); // Prix formaté
             $item.find('img').attr('src', item.image).attr('alt', item.name); // Image et alt
 
             // Ajouter un badge si le produit est indisponible
