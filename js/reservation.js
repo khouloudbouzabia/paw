@@ -4,21 +4,21 @@ $(document).ready(function() {
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
     const minDate = tomorrow.toISOString().split('T')[0];
-    $('#date').attr('min', minDate);
+    $('#reservationDate').attr('min', minDate);
 
     // Traiter le formulaire de réservation
-    $('#quickReservationForm').submit(function(e) {
+    $('#reservationForm').submit(function(e) {
         e.preventDefault();
-        
+
         // Collecter les données du modèle
         const formData = {
-            name: $('#name').val(),
+            customer_name: $('#fullName').val(),
             email: $('#email').val(),
             phone: $('#phone').val(),
-            date: $('#date').val(),
-            time: $('#time').val(),
-            people: $('#people').val(),
-            requests: $('#requests').val()
+            reservation_date: $('#reservationDate').val(),
+            reservation_time: $('#reservationTime').val(),
+            number_of_people: $('#numberOfPeople').val(),
+            special_requests: $('#specialRequests').val()
         };
 
         // Envoyer des données via AJAX
@@ -31,19 +31,19 @@ $(document).ready(function() {
                 const messageDiv = $('#reservationMessage');
                 messageDiv.removeClass('success error').addClass(response.success ? 'success' : 'error');
                 messageDiv.text(response.message);
-                
+
                 if (response.success) {
                     // Réinitialise le formulaire
-                    $('#quickReservationForm')[0].reset();
-                    //Masquer le message après 5 secondes
+                    $('#reservationForm')[0].reset();
+                    // Masquer le message après 10 secondes
                     setTimeout(() => {
                         messageDiv.fadeOut();
-                    }, 5000);
+                    }, 10000);
                 }
             },
             error: function() {
                 $('#reservationMessage').removeClass('success').addClass('error')
-                    .text('Une erreur s\est produite lors de la connexion au serveur. Veuillez réessayer.');
+                    .text('Une erreur s\'est produite lors de la connexion au serveur. Veuillez réessayer.');
             }
         });
     });
