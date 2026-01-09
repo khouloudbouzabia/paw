@@ -1,74 +1,27 @@
-$(document).ready(function() {
-    // Confirmer la réservation
-    $(document).on('click', '.btn-confirm', function() {
-        const reservationId = $(this).data('id');
-        if (confirm('Êtes-vous sûr de vouloir confirmer cette réservation ?')) {
-            $.ajax({
-                url: '../php/update_reservation.php',
-                type: 'POST',
-                data: {
-                    id: reservationId,
-                    status: 'confirmed'
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        alert('Réservation confirmée avec succès');
-                        location.reload();
-                    } else {
-                        alert('Une erreur est survenue : ' + response.message);
-                    }
-                }
-            });
-        }
+// Recherche dans les tableaux
+$('#searchInput').on('keyup', function() {
+    const value = $(this).val().toLowerCase();
+    $('.data-table tbody tr').filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
+});
 
-    // Supprimer la réservation
-    $(document).on('click', '.btn-delete', function() {
-        const reservationId = $(this).data('id');
-        if (confirm('Êtes-vous sûr de vouloir supprimer cette réservation ? Cette action est irréversible.')) {
-            $.ajax({
-                url: '../php/delete_reservation.php',
-                type: 'POST',
-                data: { id: reservationId },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        alert('Réservation supprimée avec succès');
-                        location.reload();
-                    } else {
-                        alert('Une erreur est survenue : ' + response.message);
-                    }
-                }
-            });
-        }
-    });
-
-    // Recherche dans les tableaux
-    $('#searchInput').on('keyup', function() {
-        const value = $(this).val().toLowerCase();
-        $('.data-table tbody tr').filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+// Filtrer les réservations selon le statut
+$('#statusFilter').on('change', function() {
+    const status = $(this).val();
+    if (status === 'all') {
+        $('.data-table tbody tr').show();
+    } else {
+        $('.data-table tbody tr').each(function() {
+            const rowStatus = $(this).find('.status').text().trim();
+            const statusMap = {
+                'En attente': 'pending',   // قيد الانتظار
+                'Confirmée': 'confirmed',  // مؤكد
+                'Annulée': 'cancelled'     // ملغي
+            };
+            $(this).toggle(statusMap[rowStatus] === status);
         });
-    });
-
-    // Filtrer les réservations selon le statut
-    $('#statusFilter').on('change', function() {
-        const status = $(this).val();
-        if (status === 'all') {
-            $('.data-table tbody tr').show();
-        } else {
-            $('.data-table tbody tr').each(function() {
-                const rowStatus = $(this).find('.status').text().trim();
-                const statusMap = {
-                    'قيد الانتظار': 'pending',   // En attente
-                    'مؤكد': 'confirmed',          // Confirmée
-                    'ملغي': 'cancelled'           // Annulée
-                };
-                $(this).toggle(statusMap[rowStatus] === status);
-            });
-        }
-    });
+    }
 });
 
 // ====== Graphiques ======
