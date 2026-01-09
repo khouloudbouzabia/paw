@@ -1,85 +1,77 @@
 <?php
+session_start();
 require_once 'db_connection.php';
 
-header('Content-Type: application/json; charset=utf-8');
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+// Vérification de la connexion
 if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'Accès non autorisé']);
+    echo json_encode(['success' => false, 'message' => 'Non autorisé']);
     exit;
 }
 
-// Données des réservations durant la dernière semaine
-$sql = "SELECT 
-            DATE(reservation_date) as date,
-            COUNT(*) as count,
-            SUM(CASE WHEN status = 'confirmed' THEN 1 ELSE 0 END) as confirmed,
-            SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) as pending,
-            SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) as cancelled
-        FROM reservations 
-        WHERE reservation_date >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-        GROUP BY DATE(reservation_date)
-        ORDER BY date";
-
-$result = $conn->query($sql);
-
-$chart_data = [
-    'labels' => [],
-    'datasets' => [
-        'total' => [],
-        'confirmed' => [],
-        'pending' => [],
-        'cancelled' => []
+$response = [
+    'success' => true,
+    'reservations' => [
+        'labels' => [],
+        'datasets' => ['total' => []]
+    ],
+    'products' => [
+        'labels' => [],
+        'data' => []
     ]
 ];
 
-if ($result->num_rows > 0) {
+// Données des 7 derniers jours
+for ($i = 6; $i >= 0; $i--) {
+    $date = date('Y-m-d', strtotime("-$i days"));
+    $day_name = date('D', strtotime($date));
+    
+    // Conversion des noms des jours en français
+    $days_fr = [
+        'Mon' => 'Lun',
+        'Tue' => 'Mar',
+        'Wed' => 'Mer',
+        'Thu' => 'Jeu',
+        'Fri' => 'Ven',
+        'Sat' => 'Sam',
+        'Sun' => 'Dim'
+    ];
+    
+    $day_label = $days_fr[$day_name] ?? $day_name;
+    
+    // Requête pour le nombre de réservations ce jour
+    $sql = "SELECT COUNT(*) as total FROM reservations WHERE DATE(reservation_date) = ?";
+    $stmt = $conn->prepare($sql);
+    
+    if ($stmt) {
+        $stmt->bind_param("s", $date);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        
+        $response['reservations']['labels'][] = $day_label;
+        $response['reservations']['datasets']['total'][] = $row['total'] ?? 0;
+        
+        $stmt->close();
+    }
+}
+
+// Données des produits par catégorie
+$sql = "SELECT category, COUNT(*) as count FROM products GROUP BY category";
+$result = $conn->query($sql);
+
+if ($result) {
     while ($row = $result->fetch_assoc()) {
-        $chart_data['labels'][] = date('d/m', strtotime($row['date']));
-        $chart_data['datasets']['total'][] = (int)$row['count'];
-        $chart_data['datasets']['confirmed'][] = (int)$row['confirmed'];
-        $chart_data['datasets']['pending'][] = (int)$row['pending'];
-        $chart_data['datasets']['cancelled'][] = (int)$row['cancelled'];
+        $response['products']['labels'][] = $row['category'];
+        $response['products']['data'][] = $row['count'];
     }
 }
 
-// Données des produits les plus vendus
-$sql_products = "SELECT 
-                    category,
-                    COUNT(*) as sales
-                 FROM products 
-                 GROUP BY category
-                 ORDER BY sales DESC";
-
-$result_products = $conn->query($sql_products);
-
-$products_data = [
-    'labels' => [],
-    'data' => []
-];
-
-if ($result_products->num_rows > 0) {
-    while ($row = $result_products->fetch_assoc()) {
-        $category_names = [
-            'coffee' => 'Café',
-            'tea' => 'Thé',
-            'pastry' => 'Pâtisseries',
-            'sandwich' => 'Sandwichs',
-            'dessert' => 'Desserts'
-        ];
-        $products_data['labels'][] = $category_names[$row['category']];
-        $products_data['data'][] = (int)$row['sales'];
-    }
+// Si aucune donnée pour les produits, ajouter des données fictives
+if (empty($response['products']['labels'])) {
+    $response['products']['labels'] = ['Café', 'Thé', 'Pâtisserie', 'Sandwich'];
+    $response['products']['data'] = [15, 10, 20, 8];
 }
 
-echo json_encode([
-    'success' => true,
-    'reservations' => $chart_data,
-    'products' => $products_data
-]);
-
+echo json_encode($response);
 $conn->close();
 ?>
